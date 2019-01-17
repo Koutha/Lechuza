@@ -11,4 +11,3 @@ if (is_file("controlador/controlador_" . $action . ".php")) {
 } else {
     echo "PÁGINA EN CONSTRUCCIÓN ";
 }
-?>
