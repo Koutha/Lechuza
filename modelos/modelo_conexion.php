@@ -28,7 +28,7 @@
 		}
 
 		public function ejecutarConsulta($sql){
-			$query = $this->conexion->query($sql);
+			$query = $this->getConexion()->query($sql);
 			return $query;
 	}
 

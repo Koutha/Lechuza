@@ -161,10 +161,11 @@
 			$clavehash=hash("SHA256",$clavea);
 			//Enviamos los datos 
 			$rspta=$O_usuario->verificar($logina,$clavehash);
+			
 			//Almacenamos en una variable los datos en una fila
 			$fetch=$rspta->fetchObject();
 			//Verificamos si hubo alguna dato y lo guardamos en jon
-			if ( json_encode($fetch) != 'false') {
+			if ( json_encode($fetch) != 'false' ) {
 					//Declaramos las variables de sesión
 		    	$_SESSION['id_usuario'] = $fetch->id_usuario;
 		    	$_SESSION['nombre_apellido'] = $fetch->nombre_apellido;
@@ -185,9 +186,10 @@
 				in_array(4,$valores)?$_SESSION['Reportes']=1:$_SESSION['Reportes']=0;
 			}
 			// Enviamos los datos Obtenido mediante json para su verificación en el login
+			
 	    	echo json_encode($fetch);
-
-		break;
+	    	exit;
+			break;
 		case 'salir':
 				//Limpiamos las Variables de Sesión
 			session_unset();
@@ -198,8 +200,12 @@
 
 		break;
 
+		}
+
+	}else{
+		require_once ('vistas/vista_login.php');
 	}
-	}
-	var_dump($fetch);
-	require_once ('vistas/vista_login.php');
+
+	
+
 

@@ -6,6 +6,8 @@
 			//Implementamos nuestro constructor
 		function __construct(){
 
+			parent::__construct();
+
 		}
 
 			//Implementamos un método para insertar registros
@@ -103,17 +105,22 @@
 			
 			$sql="SELECT * FROM usuario_permiso WHERE id_usuario='$id_usuario'";
 			
-			return ejecutarConsulta($sql);
+			return parent::ejecutarConsulta($sql);
 		}
 
 			//Función para verificar el acceso al sistema
 		public function verificar($login,$clave){
     		
-    		$sql="SELECT id_usuario,nombre_apellido,cedula,telefono,email,cargo,imagen,login FROM usuario WHERE login='$login' AND clave='$clave' AND condicion='1'"; 
+    		$sql = "SELECT id_usuario,nombre_apellido,cedula,telefono,email,cargo,imagen,login FROM usuario WHERE login='$login' AND clave='$clave' AND condicion='1'"; 
     		
-    		return $this->ejecutarConsulta($sql);  
+    		/*$conn = $this->getConexion();
+    		$query = $conn->query($sql);
+    		if($query){
+    			return $query;
+    		}else{
+    		return 0;
+    		} */
+    		return parent::ejecutarConsulta($sql);
     	}
 
 	}
-
-
