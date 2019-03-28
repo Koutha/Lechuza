@@ -1,3 +1,6 @@
 <?php 
+	
 
- echo 'hola, entre';
+
+
+	require_once("vista/vista_index.php");
